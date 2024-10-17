@@ -1,0 +1,167 @@
+:root
+{
+    --base-color: #202020;
+    --primary-color: #FFFFFF;
+    --accent-color: #6000FF;
+    --page-size-default: 800px;
+    --content-size-default: 700px;
+    --page-size-mobile: 400px;
+    --content-size-mobile: 300px;
+}
+
+
+
+*
+{
+    color: var(--primary-color);
+    background-color: var(--base-color);
+}
+
+
+
+html
+{
+
+}
+
+head
+{
+
+}
+
+body
+{
+    color: var(--primary-color);
+    background-color: var(--base-color);
+}
+
+header
+{
+
+}
+
+main
+{
+
+}
+
+footer
+{
+
+}
+
+
+
+.cute-card
+{
+    border: 4px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: var(--accent-color);
+
+    box-shadow: 0px 0px 15px 0px var(--accent-color);
+}
+
+.cute-subcard
+{
+    border: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--accent-color);
+
+    box-shadow: 0px 0px 5px 0px var(--accent-color);
+}
+
+.vertical-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.horizontal-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.page-sizer
+{
+    width: var(--page-size-default);
+
+    margin: 10px;
+
+    padding: 15px;
+}
+
+.content-sizer
+{
+    width: var(--content-size-default);
+}
+
+
+
+.server-message
+{
+    margin: 10px;
+}
+
+
+
+.cute-form
+{
+
+}
+
+.form-combo
+{
+    margin: 10px;
+}
+
+.form-submit-button
+{
+    margin: 10px;
+}
+
+.form-label
+{
+
+}
+
+.form-input
+{
+
+}
+
+.form-input-hidden
+{
+    display: none;
+}
+
+.form-select
+{
+
+}
+
+.form-option
+{
+
+}
+
+
+
+@media (max-width: 850px)
+{
+    .page-sizer
+    {
+        width: var(--page-size-mobile);
+    }
+
+    .content-sizer
+    {
+        width: var(--content-size-mobile);
+    }
+}

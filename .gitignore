@@ -1,0 +1,7 @@
+.vs/
+.github/
+Binaries/
+Objects/
+Lists/DefaultDatabase.categories.json
+Lists/DefaultDatabase.items.json
+Lists/DefaultDatabase.subitems.json

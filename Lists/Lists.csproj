@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\Binaries\Lists\Debug\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>..\Objects\Lists\Debug\AnyCPU\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Binaries\Lists\Release\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>..\Objects\Lists\Release\AnyCPU\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Views\Items\Show.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Items\" />
+  </ItemGroup>
+
+</Project>

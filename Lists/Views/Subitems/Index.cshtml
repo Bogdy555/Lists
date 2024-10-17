@@ -1,0 +1,67 @@
+﻿<div class="vertical-container">
+    <div class="cute-card page-sizer vertical-container">
+        <form action="/Categories/" method="post">
+            <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+            <button type="submit">Back to categories</button>
+        </form>
+        <br />
+        <p>Category: @ViewBag.ItemCategoryName</p>
+        <br />
+        <form action="/Items/@ViewBag.ItemCategoryName/" method="post">
+            <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+            <button type="submit">Back to items</button>
+        </form>
+        <br />
+        <p class="server-message">Item: @ViewBag.ItemName</p>
+    </div>
+    <br />
+    @if (ViewBag.Message != null)
+    {
+        <div class="cute-card page-sizer vertical-container">
+            <p class="server-message">@ViewBag.Message</p>
+        </div>
+        <br />
+    }
+    <form class="cute-form cute-card page-sizer vertical-container" action="/Subitems/New/@ViewBag.ItemName/@ViewBag.ItemCategoryName/" method="post">
+        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+        <input class="form-input-hidden" type="text" name="subitem.ItemName" value="@ViewBag.ItemName" />
+        <input class="form-input-hidden" type="text" name="subitem.ItemCategoryName" value="@ViewBag.ItemCategoryName" />
+        <div class="form-combo">
+            <label class="form-label">Name</label>
+            <br />
+            <input class="form-input cute-subcard content-sizer" type="text" name="subitem.Name" />
+        </div>
+        <br />
+        <div class="form-combo">
+            <label class="form-label">Description</label>
+            <br />
+            <input class="form-input cute-subcard content-sizer" type="text" name="subitem.Description" />
+        </div>
+        <br />
+        <button class="form-submit-button cute-subcard content-sizer" type="submit">Done</button>
+    </form>
+    @if (ViewBag.Subitems.Count != 0)
+    {
+        <br />
+        <div class="cute-card page-sizer vertical-container">
+            @for (int index = 0; index < ViewBag.Subitems.Count; index++)
+            {
+                <div>
+                    <p>@ViewBag.Subitems[index].Name</p>
+                    <br />
+                    <p>@ViewBag.Subitems[index].Description</p>
+                    <br />
+                    <form action="/Subitems/Delete/@ViewBag.ItemName/@ViewBag.ItemCategoryName/@ViewBag.Subitems[index].Name/" method="post">
+                        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+
+                @if (index != ViewBag.Subitems.Count - 1)
+                {
+                    <br />
+                }
+            }
+        </div>
+    }
+</div>
