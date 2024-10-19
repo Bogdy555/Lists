@@ -5,8 +5,8 @@
     --accent-color: #6000FF;
     --page-size-default: 800px;
     --content-size-default: 700px;
-    --page-size-mobile: 400px;
-    --content-size-mobile: 300px;
+    --page-size-mobile: 380px;
+    --content-size-mobile: 280px;
 }
 
 
@@ -19,35 +19,10 @@
 
 
 
-html
-{
-
-}
-
-head
-{
-
-}
-
 body
 {
     color: var(--primary-color);
     background-color: var(--base-color);
-}
-
-header
-{
-
-}
-
-main
-{
-
-}
-
-footer
-{
-
 }
 
 
