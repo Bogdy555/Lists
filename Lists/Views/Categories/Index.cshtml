@@ -7,7 +7,7 @@
         <br />
     }
     <form class="cute-form cute-card page-sizer vertical-container" action="/Categories/New/" method="post">
-        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
         <div class="form-combo">
             <label class="form-label">Name</label>
             <br />
@@ -17,7 +17,7 @@
         <div class="form-combo">
             <label class="form-label">Description</label>
             <br />
-            <input class="form-input cute-subcard content-sizer" type="text" name="category.Description" />
+            <input class="form-input cute-subcard content-sizer" type="text" name="category.Description" value="Placeholder" />
         </div>
         <br />
         <button class="form-submit-button cute-subcard content-sizer" type="submit">Done</button>
@@ -30,16 +30,18 @@
             {
                 <div>
                     <form action="/Items/@ViewBag.Categories[index].Name/" method="post">
-                        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
                         <button type="submit">@ViewBag.Categories[index].Name</button>
                     </form>
                     <br />
                     <p>@ViewBag.Categories[index].Description</p>
                     <br />
                     <form action="/Categories/Delete/@ViewBag.Categories[index].Name/" method="post">
-                        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
                         <button type="submit">Delete</button>
                     </form>
+                    <br />
+                    <button onclick="MakeEditCategory(this)">Edit</button>
                 </div>
 
                 @if (index != ViewBag.Categories.Count - 1)

@@ -10,7 +10,7 @@ namespace Lists.Controllers
 	public class CategoriesController : Controller
 	{
 
-		private Database DefaultDatabase = Database.GetDefaultInstance();
+		Database DefaultDatabase = Database.GetDefaultInstance();
 
 		public CategoriesController()
 		{
@@ -18,7 +18,7 @@ namespace Lists.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Index(String Password)
+		public IActionResult Index([FromForm] String Password)
 		{
 			if (Password != Database.Password)
 			{
@@ -36,7 +36,7 @@ namespace Lists.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult New(String Password, Category category)
+		public IActionResult New([FromForm] String Password, [FromForm] Category category)
 		{
 			if (Password != Database.Password)
 			{
@@ -72,7 +72,7 @@ namespace Lists.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Delete(String Password, String Name)
+		public IActionResult Delete([FromForm] String Password, String Name)
 		{
 			if (Password != Database.Password)
 			{
@@ -100,6 +100,56 @@ namespace Lists.Controllers
 			DefaultDatabase.Unlock();
 
 			ViewBag.Message = "Deleted!";
+
+			ViewBag.Password = Password;
+			DefaultDatabase.Lock();
+			ViewBag.Categories = DefaultDatabase.GetCategories((category) => { return true; });
+			DefaultDatabase.Unlock();
+
+			return View("Index");
+		}
+
+		[HttpPost]
+		public IActionResult Edit([FromForm] String Password, String Name, [FromForm] Category newCategory)
+		{
+			if (Password != Database.Password)
+			{
+				TempData.Add("Message", "Wrong password!");
+
+				return Redirect("/");
+			}
+
+			DefaultDatabase.Lock();
+			List<Category> categories = DefaultDatabase.GetCategories((category) => { return category.Name == Name; });
+			if (categories.Count != 1)
+			{
+				DefaultDatabase.Unlock();
+
+				ViewBag.Message = "Failed to update!";
+
+				ViewBag.Password = Password;
+				DefaultDatabase.Lock();
+				ViewBag.Categories = DefaultDatabase.GetCategories((category) => { return true; });
+				DefaultDatabase.Unlock();
+
+				return View("Index");
+			}
+			if (!DefaultDatabase.UpdateCategory(categories[0], newCategory))
+			{
+				DefaultDatabase.Unlock();
+
+				ViewBag.Message = "Failed to update!";
+
+				ViewBag.Password = Password;
+				DefaultDatabase.Lock();
+				ViewBag.Categories = DefaultDatabase.GetCategories((category) => { return true; });
+				DefaultDatabase.Unlock();
+
+				return View("Index");
+			}
+			DefaultDatabase.Unlock();
+
+			ViewBag.Message = "Updated!";
 
 			ViewBag.Password = Password;
 			DefaultDatabase.Lock();

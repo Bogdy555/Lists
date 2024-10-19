@@ -1,7 +1,7 @@
 ﻿<div class="vertical-container">
     <div class="cute-card page-sizer vertical-container">
         <form action="/Categories/" method="post">
-            <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+            <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
             <button type="submit">Back to categories</button>
         </form>
         <br />
@@ -16,7 +16,7 @@
         <br />
     }
     <form class="cute-form cute-card page-sizer vertical-container" action="/Items/New/@ViewBag.CategoryName/" method="post">
-        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
         <input class="form-input-hidden" type="text" name="item.CategoryName" value="@ViewBag.CategoryName" />
         <div class="form-combo">
             <label class="form-label">Name</label>
@@ -27,7 +27,7 @@
         <div class="form-combo">
             <label class="form-label">Description</label>
             <br />
-            <input class="form-input cute-subcard content-sizer" type="text" name="item.Description" />
+            <input class="form-input cute-subcard content-sizer" type="text" name="item.Description" value="Placeholder" />
         </div>
         <br />
         <button class="form-submit-button cute-subcard content-sizer" type="submit">Done</button>
@@ -40,16 +40,18 @@
             {
                 <div>
                     <form action="/Subitems/@ViewBag.Items[index].Name/@ViewBag.Items[index].CategoryName/" method="post">
-                        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
                         <button type="submit">@ViewBag.Items[index].Name</button>
                     </form>
                     <br />
                     <p>@ViewBag.Items[index].Description</p>
                     <br />
                     <form action="/Items/Delete/@ViewBag.CategoryName/@ViewBag.Items[index].Name/" method="post">
-                        <input class="form-input-hidden" type="text" name="Password" value="@ViewBag.Password" />
+                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
                         <button type="submit">Delete</button>
                     </form>
+                    <br />
+                    <button onclick="MakeEditItem(this, '@ViewBag.CategoryName')">Edit</button>
                 </div>
 
                 @if (index != ViewBag.Items.Count - 1)
