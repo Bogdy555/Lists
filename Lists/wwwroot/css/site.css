@@ -3,23 +3,11 @@
     --base-color: #202020;
     --primary-color: #FFFFFF;
     --accent-color: #6000FF;
-    --page-size-default: 800px;
-    --content-size-default: 700px;
-    --page-size-mobile: 380px;
-    --content-size-mobile: 280px;
 }
 
 
 
 *
-{
-    color: var(--primary-color);
-    background-color: var(--base-color);
-}
-
-
-
-body
 {
     color: var(--primary-color);
     background-color: var(--base-color);
@@ -35,6 +23,9 @@ body
     border-color: var(--accent-color);
 
     box-shadow: 0px 0px 15px 0px var(--accent-color);
+
+    margin: 10px;
+    padding: 20px;
 }
 
 .cute-subcard
@@ -45,6 +36,27 @@ body
     border-color: var(--accent-color);
 
     box-shadow: 0px 0px 5px 0px var(--accent-color);
+
+    margin: 4px;
+    padding: 4px;
+}
+
+.ui-icon-button
+{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ui-icon-img
+{
+    width: 20px;
+    height: 20px;
+}
+
+.hidden-item
+{
+    display: none;
 }
 
 .vertical-container
@@ -65,65 +77,12 @@ body
 
 .page-sizer
 {
-    width: var(--page-size-default);
-
-    margin: 10px;
-
-    padding: 15px;
+    width: 800px;
 }
 
 .content-sizer
 {
-    width: var(--content-size-default);
-}
-
-
-
-.server-message
-{
-    margin: 10px;
-}
-
-
-
-.cute-form
-{
-
-}
-
-.form-combo
-{
-    margin: 10px;
-}
-
-.form-submit-button
-{
-    margin: 10px;
-}
-
-.form-label
-{
-
-}
-
-.form-input
-{
-
-}
-
-.form-input-hidden
-{
-    display: none;
-}
-
-.form-select
-{
-
-}
-
-.form-option
-{
-
+    width: 700px;
 }
 
 
@@ -132,11 +91,11 @@ body
 {
     .page-sizer
     {
-        width: var(--page-size-mobile);
+        width: 380px;
     }
 
     .content-sizer
     {
-        width: var(--content-size-mobile);
+        width: 280px;
     }
 }

@@ -1,15 +1,18 @@
 ﻿<div class="vertical-container">
     @if (ViewBag.Message != null)
     {
-        <div class="cute-card page-sizer vertical-container">
-            <p class="server-message">@ViewBag.Message</p>
+        <div class="cute-card page-sizer horizontal-container">
+            <div class="">@ViewBag.Message</div>
+            <button class="ui-icon-button" onclick="this.parentElement.remove()">
+                <img class="ui-icon-img" src="/res/x.ico" />
+            </button>
         </div>
     }
-    <form class="cute-form cute-card page-sizer vertical-container" action="/Categories/" method="post">
-        <div class="form-combo vertical-container">
-            <label class="form-label">Password</label>
-            <input class="form-input cute-subcard content-sizer" type="password" name="Password" />
+    <form class="cute-card page-sizer vertical-container" action="/Categories/" method="post">
+        <div class="vertical-container">
+            <label class="">Password</label>
+            <input class="cute-subcard content-sizer" type="password" name="Password" />
         </div>
-        <button class="form-submit-button cute-subcard content-sizer" type="submit">Get categories!</button>
+        <button class="cute-subcard content-sizer" type="submit">Get categories!</button>
     </form>
 </div>

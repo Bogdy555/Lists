@@ -1,40 +1,38 @@
 ﻿<div class="vertical-container">
     @if (ViewBag.Message != null)
     {
-        <div class="cute-card page-sizer vertical-container">
-            <p class="server-message">@ViewBag.Message</p>
+        <div class="cute-card page-sizer horizontal-container">
+            <div class="">@ViewBag.Message</div>
+            <button class="ui-icon-button" onclick="this.parentElement.remove()">
+                <img class="ui-icon-img" src="/res/x.ico" />
+            </button>
         </div>
     }
-    <form class="cute-form cute-card page-sizer vertical-container" action="/Categories/New/" method="post">
-        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
-        <div class="form-combo vertical-container">
-            <label class="form-label">Name</label>
-            <input class="form-input cute-subcard content-sizer" type="text" name="category.Name" />
+    <form class="cute-card page-sizer vertical-container" action="/Categories/New/" method="post">
+        <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
+        <div class="vertical-container">
+            <label class="">Name</label>
+            <input class="cute-subcard content-sizer" type="text" name="category.Name" />
         </div>
-        <div class="form-combo vertical-container">
-            <label class="form-label">Description</label>
-            <input class="form-input cute-subcard content-sizer" type="text" name="category.Description" value="Placeholder" />
+        <div class="vertical-container">
+            <label class="">Description</label>
+            <input class="cute-subcard content-sizer" type="text" name="category.Description" value="Placeholder" />
         </div>
-        <button class="form-submit-button cute-subcard content-sizer" type="submit">Done</button>
+        <button class="cute-subcard content-sizer" type="submit">Done</button>
     </form>
-    @if (ViewBag.Categories.Count != 0)
+    @for (int index = 0; index < ViewBag.Categories.Count; index++)
     {
         <div class="cute-card page-sizer vertical-container">
-            @for (int index = 0; index < ViewBag.Categories.Count; index++)
-            {
-                <div class="vertical-container">
-                    <form action="/Items/@ViewBag.Categories[index].Name/" method="post">
-                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
-                        <button type="submit">@ViewBag.Categories[index].Name</button>
-                    </form>
-                    <p>@ViewBag.Categories[index].Description</p>
-                    <form action="/Categories/Delete/@ViewBag.Categories[index].Name/" method="post">
-                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
-                        <button type="submit">Delete</button>
-                    </form>
-                    <button onclick="MakeEditCategory(this)">Edit</button>
-                </div>
-            }
+            <form class="" action="/Items/@ViewBag.Categories[index].Name/" method="post">
+                <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
+                <button class="cute-subcard content-sizer" type="submit">@ViewBag.Categories[index].Name</button>
+            </form>
+            <div class="cute-subcard content-sizer">@ViewBag.Categories[index].Description</div>
+            <form class="" action="/Categories/Delete/@ViewBag.Categories[index].Name/" method="post">
+                <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
+                <button class="cute-subcard content-sizer" type="submit">Delete</button>
+            </form>
+            <button class="cute-subcard content-sizer" onclick="MakeEditCategory(this)">Edit</button>
         </div>
     }
 </div>

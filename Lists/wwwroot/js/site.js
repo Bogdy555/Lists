@@ -19,52 +19,49 @@ function MakeEditCategory(button)
     let buttonDone = document.createElement("button");
     let buttonCancel = document.createElement("button");
     categoryButtonCancelClone = buttonCancel;
-    let br1 = document.createElement("br");
-    let br2 = document.createElement("br");
-    let br3 = document.createElement("br");
 
-    form.classList.add("vertical-container");
+    // form.classList.add(""); // class=""
     form.action = "/Categories/Edit/" + parent.children[0].children[1].innerHTML + "/";
     form.method = "post";
 
-    inputPassword.classList.add("form-input-hidden");
+    inputPassword.classList.add("hidden-item");
     inputPassword.type = "password";
     inputPassword.name = "Password";
     inputPassword.setAttribute("value", parent.children[0].children[0].value);
 
-    inputName.classList.add("form-input");
+    inputName.classList.add("cute-subcard");
+    inputName.classList.add("content-sizer");
     inputName.type = "text";
     inputName.name = "newCategory.Name";
     inputName.setAttribute("value", parent.children[0].children[1].innerHTML);
 
-    inputDescription.classList.add("form-input");
+    inputDescription.classList.add("cute-subcard");
+    inputDescription.classList.add("content-sizer");
     inputDescription.type = "text";
     inputDescription.name = "newCategory.Description";
-    inputDescription.setAttribute("value", parent.children[2].innerHTML);
+    inputDescription.setAttribute("value", parent.children[1].innerHTML);
 
+    buttonDone.classList.add("cute-subcard");
+    buttonDone.classList.add("content-sizer");
     buttonDone.type = "submit";
     buttonDone.innerHTML = "Done";
 
+    buttonCancel.classList.add("cute-subcard");
+    buttonCancel.classList.add("content-sizer");
     buttonCancel.setAttribute("onclick", "MakeCardCategory(this)");
     buttonCancel.innerHTML = "Cancel";
 
     form.appendChild(inputPassword);
     form.appendChild(inputName);
-    form.appendChild(br1);
     form.appendChild(inputDescription);
-    form.appendChild(br2);
     form.appendChild(buttonDone);
 
     parent.children[0].remove();
     parent.children[0].remove();
     parent.children[0].remove();
     parent.children[0].remove();
-    parent.children[0].remove();
-    parent.children[0].remove();
-    parent.children[0].remove();
 
     parent.appendChild(form);
-    parent.appendChild(br3);
     parent.appendChild(buttonCancel);
 }
 
@@ -74,15 +71,11 @@ function MakeCardCategory(button)
 
     parent.children[0].remove();
     parent.children[0].remove();
-    parent.children[0].remove();
 
     parent.appendChild(categoryCardClone.children[0].cloneNode(true));
     parent.appendChild(categoryCardClone.children[1].cloneNode(true));
     parent.appendChild(categoryCardClone.children[2].cloneNode(true));
     parent.appendChild(categoryCardClone.children[3].cloneNode(true));
-    parent.appendChild(categoryCardClone.children[4].cloneNode(true));
-    parent.appendChild(categoryCardClone.children[5].cloneNode(true));
-    parent.appendChild(categoryCardClone.children[6].cloneNode(true));
 
     categoryCardClone = null;
     categoryButtonCancelClone = null;
@@ -112,9 +105,6 @@ function MakeEditItem(button, categoryName)
     let buttonDone = document.createElement("button");
     let buttonCancel = document.createElement("button");
     itemButtonCancelClone = buttonCancel;
-    let br1 = document.createElement("br");
-    let br2 = document.createElement("br");
-    let br3 = document.createElement("br");
 
     form.classList.add("vertical-container");
     form.action = "/Items/Edit/" + categoryName + "/" + parent.children[0].children[1].innerHTML + "/";
@@ -149,9 +139,7 @@ function MakeEditItem(button, categoryName)
     form.appendChild(inputPassword);
     form.appendChild(inputCategory);
     form.appendChild(inputName);
-    form.appendChild(br1);
     form.appendChild(inputDescription);
-    form.appendChild(br2);
     form.appendChild(buttonDone);
 
     parent.children[0].remove();
@@ -163,7 +151,6 @@ function MakeEditItem(button, categoryName)
     parent.children[0].remove();
 
     parent.appendChild(form);
-    parent.appendChild(br3);
     parent.appendChild(buttonCancel);
 }
 
@@ -173,15 +160,11 @@ function MakeCardItem(button)
 
     parent.children[0].remove();
     parent.children[0].remove();
-    parent.children[0].remove();
 
     parent.appendChild(itemCardClone.children[0].cloneNode(true));
     parent.appendChild(itemCardClone.children[1].cloneNode(true));
     parent.appendChild(itemCardClone.children[2].cloneNode(true));
     parent.appendChild(itemCardClone.children[3].cloneNode(true));
-    parent.appendChild(itemCardClone.children[4].cloneNode(true));
-    parent.appendChild(itemCardClone.children[5].cloneNode(true));
-    parent.appendChild(itemCardClone.children[6].cloneNode(true));
 
     itemCardClone = null;
     itemButtonCancelClone = null;
@@ -212,9 +195,6 @@ function MakeEditSubitem(button, itemName, itemCategoryName)
     let buttonDone = document.createElement("button");
     let buttonCancel = document.createElement("button");
     subitemButtonCancelClone = buttonCancel;
-    let br1 = document.createElement("br");
-    let br2 = document.createElement("br");
-    let br3 = document.createElement("br");
 
     form.classList.add("vertical-container");
     form.action = "/Subitems/Edit/" + itemName + "/" + itemCategoryName + "/" + parent.children[0].innerHTML + "/";
@@ -255,9 +235,7 @@ function MakeEditSubitem(button, itemName, itemCategoryName)
     form.appendChild(inputItem);
     form.appendChild(inputCategory);
     form.appendChild(inputName);
-    form.appendChild(br1);
     form.appendChild(inputDescription);
-    form.appendChild(br2);
     form.appendChild(buttonDone);
 
     parent.children[0].remove();
@@ -269,7 +247,6 @@ function MakeEditSubitem(button, itemName, itemCategoryName)
     parent.children[0].remove();
 
     parent.appendChild(form);
-    parent.appendChild(br3);
     parent.appendChild(buttonCancel);
 }
 
@@ -279,15 +256,11 @@ function MakeCardSubitem(button)
 
     parent.children[0].remove();
     parent.children[0].remove();
-    parent.children[0].remove();
 
     parent.appendChild(subitemCardClone.children[0].cloneNode(true));
     parent.appendChild(subitemCardClone.children[1].cloneNode(true));
     parent.appendChild(subitemCardClone.children[2].cloneNode(true));
     parent.appendChild(subitemCardClone.children[3].cloneNode(true));
-    parent.appendChild(subitemCardClone.children[4].cloneNode(true));
-    parent.appendChild(subitemCardClone.children[5].cloneNode(true));
-    parent.appendChild(subitemCardClone.children[6].cloneNode(true));
 
     subitemCardClone = null;
     subitemButtonCancelClone = null;

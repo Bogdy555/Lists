@@ -1,48 +1,46 @@
-﻿<div class="vertical-container">
-    <div class="cute-card page-sizer vertical-container">
+﻿<div>
+    <div>
         <form action="/Categories/" method="post">
-            <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
+            <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
             <button type="submit">Back to categories</button>
         </form>
         <p>Category: @ViewBag.CategoryName</p>
     </div>
     @if (ViewBag.Message != null)
     {
-        <div class="cute-card page-sizer vertical-container">
-            <p class="server-message">@ViewBag.Message</p>
+        <div>
+            <div>@ViewBag.Message</div>
+            <button onclick="this.parentElement.remove()">
+                <img src="/res/x.ico" />
+            </button>
         </div>
     }
-    <form class="cute-form cute-card page-sizer vertical-container" action="/Items/New/@ViewBag.CategoryName/" method="post">
-        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
-        <input class="form-input-hidden" type="text" name="item.CategoryName" value="@ViewBag.CategoryName" />
-        <div class="form-combo vertical-container">
-            <label class="form-label">Name</label>
-            <input class="form-input cute-subcard content-sizer" type="text" name="item.Name" />
+    <form action="/Items/New/@ViewBag.CategoryName/" method="post">
+        <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
+        <input class="hidden-item" type="text" name="item.CategoryName" value="@ViewBag.CategoryName" />
+        <div>
+            <label>Name</label>
+            <input type="text" name="item.Name" />
         </div>
-        <div class="form-combo vertical-container">
-            <label class="form-label">Description</label>
-            <input class="form-input cute-subcard content-sizer" type="text" name="item.Description" value="Placeholder" />
+        <div>
+            <label>Description</label>
+            <input type="text" name="item.Description" value="Placeholder" />
         </div>
-        <button class="form-submit-button cute-subcard content-sizer" type="submit">Done</button>
+        <button type="submit">Done</button>
     </form>
-    @if (ViewBag.Items.Count != 0)
+    @for (int index = 0; index < ViewBag.Items.Count; index++)
     {
-        <div class="cute-card page-sizer vertical-container">
-            @for (int index = 0; index < ViewBag.Items.Count; index++)
-            {
-                <div class="vertical-container">
-                    <form action="/Subitems/@ViewBag.Items[index].Name/@ViewBag.Items[index].CategoryName/" method="post">
-                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
-                        <button type="submit">@ViewBag.Items[index].Name</button>
-                    </form>
-                    <p>@ViewBag.Items[index].Description</p>
-                    <form action="/Items/Delete/@ViewBag.CategoryName/@ViewBag.Items[index].Name/" method="post">
-                        <input class="form-input-hidden" type="password" name="Password" value="@ViewBag.Password" />
-                        <button type="submit">Delete</button>
-                    </form>
-                    <button onclick="MakeEditItem(this, '@ViewBag.CategoryName')">Edit</button>
-                </div>
-            }
+        <div>
+            <form action="/Subitems/@ViewBag.Items[index].Name/@ViewBag.Items[index].CategoryName/" method="post">
+                <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
+                <button type="submit">@ViewBag.Items[index].Name</button>
+            </form>
+            <div>@ViewBag.Items[index].Description</div>
+            <form action="/Items/Delete/@ViewBag.CategoryName/@ViewBag.Items[index].Name/" method="post">
+                <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
+                <button type="submit">Delete</button>
+            </form>
+            <button onclick="MakeEditItem(this, '@ViewBag.CategoryName')">Edit</button>
         </div>
     }
 </div>
