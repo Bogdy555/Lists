@@ -41,6 +41,11 @@
     padding: 4px;
 }
 
+.title
+{
+    text-align: center;
+}
+
 .ui-icon-button
 {
     border: 0px;

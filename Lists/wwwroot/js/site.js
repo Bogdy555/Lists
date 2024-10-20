@@ -1,7 +1,7 @@
 ﻿let categoryCardClone = null;
 let categoryButtonCancelClone = null;
 
-function MakeEditCategory(button)
+function MakeEditCategory(button, password, name, description)
 {
     if (categoryButtonCancelClone != null)
     {
@@ -20,26 +20,26 @@ function MakeEditCategory(button)
     let buttonCancel = document.createElement("button");
     categoryButtonCancelClone = buttonCancel;
 
-    // form.classList.add(""); // class=""
+    form.classList.add("vertical-container"); // class=""
     form.action = "/Categories/Edit/" + parent.children[0].children[1].innerHTML + "/";
     form.method = "post";
 
     inputPassword.classList.add("hidden-item");
     inputPassword.type = "password";
     inputPassword.name = "Password";
-    inputPassword.setAttribute("value", parent.children[0].children[0].value);
+    inputPassword.setAttribute("value", password);
 
     inputName.classList.add("cute-subcard");
     inputName.classList.add("content-sizer");
     inputName.type = "text";
     inputName.name = "newCategory.Name";
-    inputName.setAttribute("value", parent.children[0].children[1].innerHTML);
+    inputName.setAttribute("value", name);
 
     inputDescription.classList.add("cute-subcard");
     inputDescription.classList.add("content-sizer");
     inputDescription.type = "text";
     inputDescription.name = "newCategory.Description";
-    inputDescription.setAttribute("value", parent.children[1].innerHTML);
+    inputDescription.setAttribute("value", description);
 
     buttonDone.classList.add("cute-subcard");
     buttonDone.classList.add("content-sizer");
@@ -86,7 +86,7 @@ function MakeCardCategory(button)
 let itemCardClone = null;
 let itemButtonCancelClone = null;
 
-function MakeEditItem(button, categoryName)
+function MakeEditItem(button, categoryName, password, name, description)
 {
     if (itemButtonCancelClone != null)
     {
@@ -106,33 +106,39 @@ function MakeEditItem(button, categoryName)
     let buttonCancel = document.createElement("button");
     itemButtonCancelClone = buttonCancel;
 
-    form.classList.add("vertical-container");
+    form.classList.add("vertical-container"); // class=""
     form.action = "/Items/Edit/" + categoryName + "/" + parent.children[0].children[1].innerHTML + "/";
     form.method = "post";
 
-    inputPassword.classList.add("form-input-hidden");
+    inputPassword.classList.add("hidden-item");
     inputPassword.type = "password";
     inputPassword.name = "Password";
-    inputPassword.setAttribute("value", parent.children[0].children[0].value);
+    inputPassword.setAttribute("value", password);
 
-    inputCategory.classList.add("form-input-hidden");
+    inputCategory.classList.add("hidden-item");
     inputCategory.type = "text";
     inputCategory.name = "newItem.CategoryName";
     inputCategory.setAttribute("value", categoryName);
 
-    inputName.classList.add("form-input");
+    inputName.classList.add("cute-subcard");
+    inputName.classList.add("content-sizer");
     inputName.type = "text";
     inputName.name = "newItem.Name";
-    inputName.setAttribute("value", parent.children[0].children[1].innerHTML);
+    inputName.setAttribute("value", name);
 
-    inputDescription.classList.add("form-input");
+    inputDescription.classList.add("cute-subcard");
+    inputDescription.classList.add("content-sizer");
     inputDescription.type = "text";
     inputDescription.name = "newItem.Description";
-    inputDescription.setAttribute("value", parent.children[2].innerHTML);
+    inputDescription.setAttribute("value", description);
 
+    buttonDone.classList.add("cute-subcard");
+    buttonDone.classList.add("content-sizer");
     buttonDone.type = "submit";
     buttonDone.innerHTML = "Done";
 
+    buttonCancel.classList.add("cute-subcard");
+    buttonCancel.classList.add("content-sizer");
     buttonCancel.setAttribute("onclick", "MakeCardItem(this)");
     buttonCancel.innerHTML = "Cancel";
 
@@ -142,9 +148,6 @@ function MakeEditItem(button, categoryName)
     form.appendChild(inputDescription);
     form.appendChild(buttonDone);
 
-    parent.children[0].remove();
-    parent.children[0].remove();
-    parent.children[0].remove();
     parent.children[0].remove();
     parent.children[0].remove();
     parent.children[0].remove();
@@ -175,7 +178,7 @@ function MakeCardItem(button)
 let subitemCardClone = null;
 let subitemButtonCancelClone = null;
 
-function MakeEditSubitem(button, itemName, itemCategoryName)
+function MakeEditSubitem(button, itemName, itemCategoryName, password, name, description)
 {
     if (subitemButtonCancelClone != null)
     {
@@ -196,38 +199,44 @@ function MakeEditSubitem(button, itemName, itemCategoryName)
     let buttonCancel = document.createElement("button");
     subitemButtonCancelClone = buttonCancel;
 
-    form.classList.add("vertical-container");
+    form.classList.add("vertical-container"); // class=""
     form.action = "/Subitems/Edit/" + itemName + "/" + itemCategoryName + "/" + parent.children[0].innerHTML + "/";
     form.method = "post";
 
-    inputPassword.classList.add("form-input-hidden");
+    inputPassword.classList.add("hidden-item");
     inputPassword.type = "password";
     inputPassword.name = "Password";
-    inputPassword.setAttribute("value", parent.children[4].children[0].value);
+    inputPassword.setAttribute("value", password);
 
-    inputItem.classList.add("form-input-hidden");
+    inputItem.classList.add("hidden-item");
     inputItem.type = "text";
     inputItem.name = "newSubitem.ItemName";
     inputItem.setAttribute("value", itemName);
 
-    inputCategory.classList.add("form-input-hidden");
+    inputCategory.classList.add("hidden-item");
     inputCategory.type = "text";
     inputCategory.name = "newSubitem.ItemCategoryName";
     inputCategory.setAttribute("value", itemCategoryName);
 
-    inputName.classList.add("form-input");
+    inputName.classList.add("cute-subcard");
+    inputName.classList.add("content-sizer");
     inputName.type = "text";
     inputName.name = "newSubitem.Name";
-    inputName.setAttribute("value", parent.children[0].innerHTML);
+    inputName.setAttribute("value", name);
 
-    inputDescription.classList.add("form-input");
+    inputDescription.classList.add("cute-subcard");
+    inputDescription.classList.add("content-sizer");
     inputDescription.type = "text";
     inputDescription.name = "newSubitem.Description";
-    inputDescription.setAttribute("value", parent.children[2].innerHTML);
+    inputDescription.setAttribute("value", description);
 
+    buttonDone.classList.add("cute-subcard");
+    buttonDone.classList.add("content-sizer");
     buttonDone.type = "submit";
     buttonDone.innerHTML = "Done";
 
+    buttonCancel.classList.add("cute-subcard");
+    buttonCancel.classList.add("content-sizer");
     buttonCancel.setAttribute("onclick", "MakeCardSubitem(this)");
     buttonCancel.innerHTML = "Cancel";
 
@@ -238,9 +247,6 @@ function MakeEditSubitem(button, itemName, itemCategoryName)
     form.appendChild(inputDescription);
     form.appendChild(buttonDone);
 
-    parent.children[0].remove();
-    parent.children[0].remove();
-    parent.children[0].remove();
     parent.children[0].remove();
     parent.children[0].remove();
     parent.children[0].remove();

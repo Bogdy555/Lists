@@ -32,7 +32,7 @@
                 <input class="hidden-item" type="password" name="Password" value="@ViewBag.Password" />
                 <button class="cute-subcard content-sizer" type="submit">Delete</button>
             </form>
-            <button class="cute-subcard content-sizer" onclick="MakeEditCategory(this)">Edit</button>
+            <button class="cute-subcard content-sizer" onclick="MakeEditCategory(this, '@ViewBag.Password', '@ViewBag.Categories[index].Name', '@ViewBag.Categories[index].Description')">Edit</button>
         </div>
     }
 </div>
