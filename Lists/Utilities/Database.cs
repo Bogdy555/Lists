@@ -268,7 +268,7 @@ namespace Lists.Utilities
 				return false;
 			}
 
-			if (originalCategory.GetKey() != newCategory.GetKey())
+			if (!originalCategory.GetKey().Equals(newCategory.GetKey()))
 			{
 				foreach (Category category in Categories)
 				{
@@ -286,7 +286,7 @@ namespace Lists.Utilities
 			originalCategory.Name = newCategory.Name;
 			originalCategory.Description = newCategory.Description;
 
-			if (originalCategory.GetKey() != originalCategoryKey)
+			if (!originalCategory.GetKey().Equals(originalCategoryKey))
 			{
 				foreach (Item originalItem in Items)
 				{
@@ -336,7 +336,7 @@ namespace Lists.Utilities
 				return false;
 			}
 
-			if (originalItem.GetKey() != newItem.GetKey())
+			if (!originalItem.GetKey().Equals(newItem.GetKey()))
 			{
 				foreach (Item item in Items)
 				{
@@ -355,7 +355,7 @@ namespace Lists.Utilities
 			originalItem.Description = newItem.Description;
 			originalItem.CategoryName = newItem.CategoryName;
 
-			if (originalItem.GetKey() != originalItemKey)
+			if (!originalItem.GetKey().Equals(originalItemKey))
 			{
 				foreach (Subitem originalSubitem in Subitems)
 				{
@@ -406,7 +406,7 @@ namespace Lists.Utilities
 				return false;
 			}
 
-			if (originalSubitem.GetKey() != newSubitem.GetKey())
+			if (!originalSubitem.GetKey().Equals(newSubitem.GetKey()))
 			{
 				foreach (Subitem subitem in Subitems)
 				{
@@ -426,7 +426,7 @@ namespace Lists.Utilities
 			originalSubitem.ItemName = newSubitem.ItemName;
 			originalSubitem.ItemCategoryName = newSubitem.ItemCategoryName;
 
-			if (originalSubitem.GetKey() != originalSubitemKey)
+			if (!originalSubitem.GetKey().Equals(originalSubitemKey))
 			{
 
 			}
